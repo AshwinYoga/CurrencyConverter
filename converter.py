@@ -15,6 +15,7 @@ def exchangerate():
 
 
 def main():
+    print("hi")
     exchangerate()
 
 
@@ -22,5 +23,5 @@ def main():
 
 
 #this is just something you always do in python for main functions idk why
-if __name__ == "main":
+if __name__ == "__main__":
     main()
