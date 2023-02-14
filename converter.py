@@ -18,7 +18,8 @@ def main():
     print("hello")
     print("AShwin")
 
-
+    print("whats up")
+    
 #this is just something you always do in python for main functions idk why
 if __name__ == "__main__":
     main()
