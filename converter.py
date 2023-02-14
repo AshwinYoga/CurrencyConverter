@@ -17,6 +17,7 @@ def main():
     exchangerate()
     print("hello")
     print("AShwin")
+    print("devo")
 
     print("whats up")
     
