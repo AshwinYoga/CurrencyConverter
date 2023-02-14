@@ -17,6 +17,7 @@ def main():
     exchangerate()
     print("hello")
     print("AShwin")
+    print("devo")
 
 
 #this is just something you always do in python for main functions idk why
