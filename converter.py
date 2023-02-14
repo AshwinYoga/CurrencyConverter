@@ -12,10 +12,11 @@ def exchangerate():
     response = requests.get(url)
     data = response.json()
     print(data)
-
-
+    print("hi")
+    
 def main():
     exchangerate()
+    print("hi")
 
 
 
