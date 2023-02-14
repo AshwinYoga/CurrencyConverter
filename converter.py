@@ -16,8 +16,6 @@ def exchangerate():
 def main():
     exchangerate()
     print("hello")
-    
-    print("devo")
 
 
 
