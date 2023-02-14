@@ -13,14 +13,12 @@ def exchangerate():
     data = response.json()
     print(data)
 
-
 def main():
     exchangerate()
-
-
+    print("hello")
 
 
 
 #this is just something you always do in python for main functions idk why
-if __name__ == "main":
+if __name__ == "__main__":
     main()
