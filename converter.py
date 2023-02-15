@@ -14,6 +14,7 @@ def exchangerate():
     print(data)
 
 def main():
+    print("hi")
     exchangerate()
     print("hello")
     print("AShwin")
