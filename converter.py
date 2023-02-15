@@ -3,25 +3,23 @@ import requests
 
 #write main function
 
+
+def interactions():
+    
+
+
 #API call 
 def exchangerate():
     #API key
     url = " https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/USD"
     #USD is base currency
-
     response = requests.get(url)
     data = response.json()
     print(data)
 
 def main():
-    print("hi")
+    #stuff goes here
     exchangerate()
-    print("hello")
-    print("AShwin")
-    print("devo")
-
-    print("whats up")
-    print("wagwan jammybear")
 
 
 
