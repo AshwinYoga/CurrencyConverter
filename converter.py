@@ -5,17 +5,29 @@ import requests
 
 
 def interactions():
-    print("shmows")
+    quoteCurrency = print("Choose Quote Currency: ")
+
 
 
 #API call 
 def exchangerate():
-    #API key
-    url = " https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/USD"
-    #USD is base currency
+    baseCurrency = input("Choose base currency: ")
+    #API key -> variable based on user input
+    url = f"https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/{baseCurrency}"
+    #{baseCurrency} is base currency
     response = requests.get(url)
     data = response.json()
-    print(data)
+
+    #Converts the value of the last key,value pair into a new dictionary
+    conversionRates = dict(data["conversion_rates"])
+
+    #prints new conversion rate
+    for key, value in conversionRates.items():
+        print(key, ":", value)
+
+    
+       
+
 
 def main():
     #stuff goes here
