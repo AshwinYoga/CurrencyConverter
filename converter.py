@@ -60,7 +60,7 @@ def exchangerate(baseCurrency):
 
     quoteCurrency = input("Choose Quote Currency: ")
     print(f"Conversion Rate: 1 {baseCurrency} : {conversionRates[quoteCurrency]} {quoteCurrency}")
-    return [baseCurrency,quoteCurrency, conversionRates[quoteCurrency]]
+    return [quoteCurrency, conversionRates[quoteCurrency]]
 
     
        
@@ -68,7 +68,8 @@ def exchangerate(baseCurrency):
 
 def main():
     #stuff goes here
-    [baseCurrency,quoteCurrency,conversionRate] = exchangerate(displayCurrency())
+    baseCurrency = displayCurrency()
+    [quoteCurrency,conversionRate] = exchangerate(baseCurrency)
     convertCurrency(baseCurrency,quoteCurrency,conversionRate)
     
 
