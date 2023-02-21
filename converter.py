@@ -8,10 +8,11 @@ def interactions():
     quoteCurrency = print("Choose Quote Currency: ")
 
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
-    conversionAmt = print(f"How much {baseCurrency} would you like to convert to {quoteCurrency}")
-    total = conversionAmt*conversionRate
+    conversionAmt = input(f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
 
-    return total
+    total = float(conversionAmt)*conversionRate
+
+    print(f"{round(total,2)} {quoteCurrency}")
 
 
 def displayAllCurrencies():
@@ -61,14 +62,22 @@ def exchangerate(baseCurrency):
     for key, value in conversionRates.items():
         print(key, ":", value)
 
+    quoteCurrency = input("Choose Quote Currency: ")
+    print(f"Conversion Rate: 1 {baseCurrency} : {conversionRates[quoteCurrency]} {quoteCurrency}")
+    return [baseCurrency,quoteCurrency, conversionRates[quoteCurrency]]
+
     
        
 
 
 def main():
     #stuff goes here
+    [baseCurrency,quoteCurrency,conversionRate] = exchangerate(displayCurrency())
+    convertCurrency(baseCurrency,quoteCurrency,conversionRate)
     
-    exchangerate(displayCurrency())
+
+    
+
 
 
 
