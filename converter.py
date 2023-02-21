@@ -4,10 +4,8 @@ import requests
 #write main function
 
 
-def interactions():
-    quoteCurrency = print("Choose Quote Currency: ")
-
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
+    
     conversionAmt = input(f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
 
     total = float(conversionAmt)*conversionRate
@@ -16,6 +14,7 @@ def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
 
 
 def displayAllCurrencies():
+      
       #reading txt files -> found on stack
       with open('Currencies.txt', 'r', encoding='utf-8') as f:
         for line in f: 
@@ -24,6 +23,7 @@ def displayAllCurrencies():
 
 
 def displayCurrency():
+
     #list top ten most common traded currencies
     topCurrencies = ["USD", "EUR", "GBP", "CAD","AUD", "NZD", "CHF","JPY","CNY", "HKD"]
     print("Select a Currency: ")
@@ -41,14 +41,10 @@ def displayCurrency():
     return baseCurrency    
 
 
-# def displayAll():
-#     d
-
-   
 
 #API call 
 def exchangerate(baseCurrency):
-    # baseCurrency = input("Choose base currency: ")
+
     #API key -> variable based on user input
     url = f"https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/{baseCurrency}"
     #{baseCurrency} is base currency
