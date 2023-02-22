@@ -15,7 +15,7 @@ def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
 
 
 def userInput(pair):
-    
+
     displayCurrencies(pair)
     currency = input(">")
     if currency == "ALL":
@@ -24,8 +24,9 @@ def userInput(pair):
 
     return currency
 
+
 def displayCurrencies(pair):
-      # list top ten most common traded currencies
+    # list top ten most common traded currencies
     topCurrencies = ["USD", "EUR", "GBP", "CAD",
                      "AUD", "NZD", "CHF", "JPY", "CNY", "HKD"]
     print(f"Select {pair} Currency: ")
@@ -34,7 +35,6 @@ def displayCurrencies(pair):
         print(currency)
     print("Enter 'ALL' to List All Currencies")
 
-    
 
 def displayAllCurrencies():
 
@@ -46,14 +46,14 @@ def displayAllCurrencies():
             print(currency)
 
 
-#calling API here to get conversion rate
-def getConversionRate(baseCurrency,quoteCurrency):  
+# calling API here to get conversion rate
+def getConversionRate(baseCurrency, quoteCurrency):
 
     # API key -> variable based on user input
     url = f"https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/{baseCurrency}"
     # {baseCurrency} is base currency
     response = requests.get(url)
-    data = response.json() 
+    data = response.json()
     # Converts the value of the last key,value pair into a new dictionary
     conversionRates = dict(data["conversion_rates"])
 
@@ -63,51 +63,46 @@ def getConversionRate(baseCurrency,quoteCurrency):
 def chooseBase():
     return userInput("Base")
 
-    
+
 def chooseQuote():
     return userInput("Quote")
 
 
 # menu
-def menu(input,baseCurrency, quoteCurrency, conversionRate):
-    match input:
-        case 'A':
-            convertCurrency(baseCurrency, quoteCurrency, conversionRate)
-            
-        case 'B':
-            baseCurrency = chooseBase()
-            conversionRate = getConversionRate(baseCurrency,quoteCurrency)
-        
-            return menu('A',baseCurrency, quoteCurrency, conversionRate)
-            
+def menu(input, baseCurrency, quoteCurrency, conversionRate):
 
-        case 'C':
-           print(baseCurrency)
-           quoteCurrency = chooseQuote()
-           conversionRate = getConversionRate(baseCurrency,quoteCurrency)
-          
-           return menu('A',baseCurrency, quoteCurrency, conversionRate)
-        case _:
-            print("Invalid Option")
+    if input == 'A':
+        convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+    elif input == 'B':
+        baseCurrency = chooseBase()
+        conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+        return menu('A', baseCurrency, quoteCurrency, conversionRate)
+    elif input == 'C':
+        quoteCurrency = chooseQuote()
+        conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+        return menu('A', baseCurrency, quoteCurrency, conversionRate)
+    else:
+        print("Invalid Option")
 
-    return baseCurrency, quoteCurrency, conversionRate   
-        
+    return baseCurrency, quoteCurrency, conversionRate
+
 
 def main():
     # stuff goes here
     baseCurrency = chooseBase()
     quoteCurrency = chooseQuote()
-    conversionRate = getConversionRate(baseCurrency,quoteCurrency)
-    convertCurrency(baseCurrency, quoteCurrency,conversionRate)
+    conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+    convertCurrency(baseCurrency, quoteCurrency, conversionRate)
 
     # allowing the program to run
     while True:
-        
+
         menuSelect = input(
-            "Please Select A Menu Option\nA -> Enter A New Amount\nB -> Choose New Base Currency\nC -> Choose New Quote Currency\nQUIT -> Exit Program\n> ")
+            "Please Select A Menu Option\nA -> Enter A New Amount\nB -> Choose New Base Currency\nC -> Choose New Quote Currency\nD -> Swap Base and Quote Currency\nE -> New Conversion\nQUIT -> Exit Program\n> ")
         if menuSelect == "QUIT":
             break
-        baseCurrency, quoteCurrency, conversionRate = menu(menuSelect,baseCurrency,quoteCurrency,conversionRate)
+        baseCurrency, quoteCurrency, conversionRate = menu(
+            menuSelect, baseCurrency, quoteCurrency, conversionRate)
 
 
 # this is just something you always do in python for main functions idk why
