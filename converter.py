@@ -5,31 +5,27 @@ import requests
 
 
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
-
     print(f"1 {baseCurrency} : {conversionRate} {quoteCurrency}")
-
     conversionAmt = input(
         f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
     total = float(conversionAmt)*conversionRate
     print(f"{round(total,2)} {quoteCurrency}")
 
-
-def userInput(pair):
-
-    displayCurrencies(pair)
+#one input function asks user for base or quote
+def chooseCurrency(base_or_quote):
+    displayCurrencies(base_or_quote)
     currency = input(">")
     if currency == "ALL":
         displayAllCurrencies()
         currency = input(">")
-
     return currency
 
 
-def displayCurrencies(pair):
+def displayCurrencies(base_or_quote):
     # list top ten most common traded currencies
     topCurrencies = ["USD", "EUR", "GBP", "CAD",
                      "AUD", "NZD", "CHF", "JPY", "CNY", "HKD"]
-    print(f"Select {pair} Currency: ")
+    print(f"Select {base_or_quote} Currency: ")
     # lists them
     for currency in topCurrencies:
         print(currency)
@@ -37,7 +33,6 @@ def displayCurrencies(pair):
 
 
 def displayAllCurrencies():
-
     # reading txt files -> found on stack
     with open('Currencies.txt', 'r', encoding='utf-8') as f:
         for line in f:
@@ -60,12 +55,20 @@ def getConversionRate(baseCurrency, quoteCurrency):
     return conversionRates[quoteCurrency]
 
 
-def chooseBase():
-    return userInput("Base")
+
+#returns it in reverse
+def swapCurrencies(baseCurrency, quoteCurrency):
+    return quoteCurrency, baseCurrency
 
 
-def chooseQuote():
-    return userInput("Quote")
+def runConversion(): 
+    baseCurrency = chooseCurrency("Base")
+    quoteCurrency = chooseCurrency("Quote")
+    conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+    convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+
+    return baseCurrency, quoteCurrency, conversionRate
+
 
 
 # menu
@@ -74,13 +77,19 @@ def menu(input, baseCurrency, quoteCurrency, conversionRate):
     if input == 'A':
         convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'B':
-        baseCurrency = chooseBase()
+        baseCurrency = chooseCurrency("Base")
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
-        return menu('A', baseCurrency, quoteCurrency, conversionRate)
+        convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'C':
-        quoteCurrency = chooseQuote()
+        quoteCurrency = chooseCurrency("Quote")
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
-        return menu('A', baseCurrency, quoteCurrency, conversionRate)
+        convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+    elif input == 'D':
+        baseCurrency, quoteCurrency = swapCurrencies(baseCurrency,quoteCurrency)
+        conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+        convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+    elif input == 'E':
+       baseCurrency, quoteCurrency, conversionRate = runConversion()
     else:
         print("Invalid Option")
 
@@ -89,10 +98,7 @@ def menu(input, baseCurrency, quoteCurrency, conversionRate):
 
 def main():
     # stuff goes here
-    baseCurrency = chooseBase()
-    quoteCurrency = chooseQuote()
-    conversionRate = getConversionRate(baseCurrency, quoteCurrency)
-    convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+    baseCurrency,quoteCurrency, conversionRate = runConversion()
 
     # allowing the program to run
     while True:
