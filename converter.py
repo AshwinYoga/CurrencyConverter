@@ -1,83 +1,115 @@
 import sys
 import requests
 
-#write main function
+# write main function
 
 
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
-    
-    conversionAmt = input(f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
 
+    print(f"1 {baseCurrency} : {conversionRate} {quoteCurrency}")
+
+    conversionAmt = input(
+        f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
     total = float(conversionAmt)*conversionRate
-
     print(f"{round(total,2)} {quoteCurrency}")
 
 
+def userInput(pair):
+    
+    displayCurrencies(pair)
+    currency = input(">")
+    if currency == "ALL":
+        displayAllCurrencies()
+        currency = input(">")
+
+    return currency
+
+def displayCurrencies(pair):
+      # list top ten most common traded currencies
+    topCurrencies = ["USD", "EUR", "GBP", "CAD",
+                     "AUD", "NZD", "CHF", "JPY", "CNY", "HKD"]
+    print(f"Select {pair} Currency: ")
+    # lists them
+    for currency in topCurrencies:
+        print(currency)
+    print("Enter 'ALL' to List All Currencies")
+
+    
+
 def displayAllCurrencies():
-      
-      #reading txt files -> found on stack
-      with open('Currencies.txt', 'r', encoding='utf-8') as f:
-        for line in f: 
-            currency = line.split()[0]  #gets the word at first index of eachline
+
+    # reading txt files -> found on stack
+    with open('Currencies.txt', 'r', encoding='utf-8') as f:
+        for line in f:
+            # gets the word at first index of eachline
+            currency = line.split()[0]
             print(currency)
 
 
-def displayCurrency():
+#calling API here to get conversion rate
+def getConversionRate(baseCurrency,quoteCurrency):  
 
-    #list top ten most common traded currencies
-    topCurrencies = ["USD", "EUR", "GBP", "CAD","AUD", "NZD", "CHF","JPY","CNY", "HKD"]
-    print("Select a Currency: ")
-    #lists them
-    for currency in topCurrencies:
-        print(currency)   
-    print("Enter 'ALL' to List All Currencies")
-    #takes user input
-    baseCurrency = input(">")
-    if baseCurrency == "ALL":
-        displayAllCurrencies()
-        baseCurrency = input(">")
-
-    
-    return baseCurrency    
-
-
-
-#API call 
-def exchangerate(baseCurrency):
-
-    #API key -> variable based on user input
+    # API key -> variable based on user input
     url = f"https://v6.exchangerate-api.com/v6/d1fb75f31e693824ef75c19f/latest/{baseCurrency}"
-    #{baseCurrency} is base currency
+    # {baseCurrency} is base currency
     response = requests.get(url)
-    data = response.json()
-
-    #Converts the value of the last key,value pair into a new dictionary
+    data = response.json() 
+    # Converts the value of the last key,value pair into a new dictionary
     conversionRates = dict(data["conversion_rates"])
 
-    #prints new conversion rate
-    for key, value in conversionRates.items():
-        print(key, ":", value)
+    return conversionRates[quoteCurrency]
 
-    quoteCurrency = input("Choose Quote Currency: ")
-    print(f"Conversion Rate: 1 {baseCurrency} : {conversionRates[quoteCurrency]} {quoteCurrency}")
-    return [quoteCurrency, conversionRates[quoteCurrency]]
+
+def chooseBase():
+    return userInput("Base")
 
     
-       
+def chooseQuote():
+    return userInput("Quote")
 
+
+# menu
+def menu(input,baseCurrency, quoteCurrency, conversionRate):
+    match input:
+        case 'A':
+            convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+            
+        case 'B':
+            baseCurrency = chooseBase()
+            conversionRate = getConversionRate(baseCurrency,quoteCurrency)
+        
+            return menu('A',baseCurrency, quoteCurrency, conversionRate)
+            
+
+        case 'C':
+           print(baseCurrency)
+           quoteCurrency = chooseQuote()
+           conversionRate = getConversionRate(baseCurrency,quoteCurrency)
+          
+           return menu('A',baseCurrency, quoteCurrency, conversionRate)
+        case _:
+            print("Invalid Option")
+
+    return baseCurrency, quoteCurrency, conversionRate   
+        
 
 def main():
-    #stuff goes here
-    baseCurrency = displayCurrency()
-    [quoteCurrency,conversionRate] = exchangerate(baseCurrency)
-    convertCurrency(baseCurrency,quoteCurrency,conversionRate)
-    
+    # stuff goes here
+    baseCurrency = chooseBase()
+    quoteCurrency = chooseQuote()
+    conversionRate = getConversionRate(baseCurrency,quoteCurrency)
+    convertCurrency(baseCurrency, quoteCurrency,conversionRate)
 
-    
+    # allowing the program to run
+    while True:
+        
+        menuSelect = input(
+            "Please Select A Menu Option\nA -> Enter A New Amount\nB -> Choose New Base Currency\nC -> Choose New Quote Currency\nQUIT -> Exit Program\n> ")
+        if menuSelect == "QUIT":
+            break
+        baseCurrency, quoteCurrency, conversionRate = menu(menuSelect,baseCurrency,quoteCurrency,conversionRate)
 
 
-
-
-#this is just something you always do in python for main functions idk why
+# this is just something you always do in python for main functions idk why
 if __name__ == "__main__":
     main()
