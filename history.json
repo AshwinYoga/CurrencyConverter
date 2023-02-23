@@ -1,40 +1,5 @@
 [
    {
-      "timeStamp": "2023-02-23 14:05:33",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 999.0,
-      "outputAmount": 1353.0456000000001
-   },
-   {
-      "timeStamp": "2023-02-23 14:07:20",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 777.0,
-      "outputAmount": 1052.3688
-   },
-   {
-      "timeStamp": "2023-02-23 14:07:41",
-      "baseCurrency": "EUR",
-      "quoteCurrency": "GBP",
-      "inputAmount": 333.0,
-      "outputAmount": 293.1066
-   },
-   {
-      "timeStamp": "2023-02-23 14:14:53",
-      "baseCurrency": "HKD",
-      "quoteCurrency": "NZD",
-      "inputAmount": 444.0,
-      "outputAmount": 90.8868
-   },
-   {
-      "timeStamp": "2023-02-23 14:15:50",
-      "baseCurrency": "JPY",
-      "quoteCurrency": "NZD",
-      "inputAmount": 333444.0,
-      "outputAmount": 3971.31804
-   },
-   {
       "timeStamp": "2023-02-23 14:17:15",
       "baseCurrency": "USD",
       "quoteCurrency": "NZD",
@@ -70,108 +35,38 @@
       "outputAmount": 548.1735
    },
    {
-      "timeStamp": "2023-02-23 14:30:51",
-      "baseCurrency": "EUR",
-      "quoteCurrency": "JPY",
-      "inputAmount": 222.0,
-      "outputAmount": 31785.826799999995
-   },
-   {
-      "timeStamp": "2023-02-23 14:32:04",
-      "baseCurrency": "USD",
-      "quoteCurrency": "NZD",
-      "inputAmount": 999.0,
-      "outputAmount": 1604.2941
-   },
-   {
-      "timeStamp": "2023-02-23 14:34:01",
-      "baseCurrency": "USD",
-      "quoteCurrency": "HKD",
-      "inputAmount": 773.0,
-      "outputAmount": 6064.880700000001
-   },
-   {
-      "timeStamp": "2023-02-23 14:35:06",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CNY",
-      "inputAmount": 3332.0,
-      "outputAmount": 22978.804799999998
-   },
-   {
-      "timeStamp": "2023-02-23 14:35:49",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CHF",
-      "inputAmount": 772.0,
-      "outputAmount": 717.574
-   },
-   {
-      "timeStamp": "2023-02-23 14:42:53",
+      "timeStamp": "2023-02-23 14:55:53",
       "baseCurrency": "USD",
       "quoteCurrency": "GBP",
-      "inputAmount": 888777.0,
-      "outputAmount": 736618.3776
+      "inputAmount": 111222.0,
+      "outputAmount": 92180.7936
    },
    {
-      "timeStamp": "2023-02-23 14:43:35",
+      "timeStamp": "2023-02-23 14:57:21",
       "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 222.0,
+      "outputAmount": 300.6768
+   },
+   {
+      "timeStamp": "2023-02-23 14:59:18",
+      "baseCurrency": "usd",
       "quoteCurrency": "GBP",
       "inputAmount": 333.0,
       "outputAmount": 275.99039999999997
    },
    {
-      "timeStamp": "2023-02-23 14:45:16",
-      "baseCurrency": "CUP",
-      "quoteCurrency": "GBP",
-      "inputAmount": 444.0,
-      "outputAmount": 15.33132
-   },
-   {
-      "timeStamp": "2023-02-23 14:46:14",
-      "baseCurrency": "CUP",
-      "quoteCurrency": "HKD",
+      "timeStamp": "2023-02-23 14:59:46",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
       "inputAmount": 111.0,
-      "outputAmount": 36.285900000000005
+      "outputAmount": 150.3384
    },
    {
-      "timeStamp": "2023-02-23 14:46:29",
-      "baseCurrency": "HKD",
-      "quoteCurrency": "CUP",
-      "inputAmount": 222111.0,
-      "outputAmount": 679415.3379
-   },
-   {
-      "timeStamp": "2023-02-23 14:48:32",
-      "baseCurrency": "JPY",
-      "quoteCurrency": "AUD",
-      "inputAmount": 888.0,
-      "outputAmount": 9.66144
-   },
-   {
-      "timeStamp": "2023-02-23 14:49:24",
-      "baseCurrency": "CNY",
-      "quoteCurrency": "USD",
-      "inputAmount": 555.0,
-      "outputAmount": 80.475
-   },
-   {
-      "timeStamp": "2023-02-23 14:49:49",
-      "baseCurrency": "CNY",
-      "quoteCurrency": "VND",
-      "inputAmount": 222000.0,
-      "outputAmount": 767224452.0
-   },
-   {
-      "timeStamp": "2023-02-23 14:50:04",
-      "baseCurrency": "CNY",
-      "quoteCurrency": "VND",
-      "inputAmount": 333.0,
-      "outputAmount": 1150836.678
-   },
-   {
-      "timeStamp": "2023-02-23 14:50:11",
-      "baseCurrency": "VND",
-      "quoteCurrency": "CNY",
-      "inputAmount": 1111000.0,
-      "outputAmount": 321.47896000000003
+      "timeStamp": "2023-02-23 15:03:22",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 39393.0,
+      "outputAmount": 53353.8792
    }
 ]

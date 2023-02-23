@@ -32,7 +32,8 @@ def writeHistory(baseCurrency, quoteCurrency, inputAmount, outputAmount, data):
     }
 
     # only have the last ten entries FIFO
-    if entryList == 10:
+    print(len(entryList))
+    if len(entryList) == 10:
         entryList.pop(0)
 
     entryList.append(entry)
