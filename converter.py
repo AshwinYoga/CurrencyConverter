@@ -1,35 +1,97 @@
 import sys
 import requests
+from datetime import datetime
+import json
+import queue
+
 
 # write main function
+
+
+# func to get time and add to dictionary and write to txt file
+# if dictionary is longer than will remove the last entry
+# FILO
+def writeHistory(baseCurrency, quoteCurrency, inputAmount, outputAmount, data):
+
+    # if file is empty, basically never matters
+    if data is None:
+        data = []
+    # create list from the data passed through
+    # data is already list
+    # need to do this to recognize the list functions -> append, pop, etc..
+    entryList = list(data)
+
+    currentTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    entry = {
+        "timeStamp": currentTime,
+        "baseCurrency": baseCurrency,
+        "quoteCurrency": quoteCurrency,
+        "inputAmount": inputAmount,
+        "outputAmount": outputAmount
+    }
+
+    # only have the last ten entries FIFO
+    print(len(entryList))
+    if len(entryList) == 10:
+        entryList.pop(0)
+
+    entryList.append(entry)
+    writeToJson(entryList)
+
+
+def readJson():
+    history = []
+    with open('history.json', 'r') as f:
+        # prevents errors if the file is empty -> found on stack
+        if len(f.readlines()) != 0:
+            f.seek(0)
+            history = json.load(f)
+    return history
+
+
+def writeToJson(historyList):
+    with open("history.json", "w") as f:
+        # indent= 3 allows for better formatting on json file, now neccessary, but more readable
+        json.dump(historyList, f, indent=3)
+    f.close()
+
+# Actual conversion is done
 
 
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
     print(f"1 {baseCurrency} : {conversionRate} {quoteCurrency}")
     conversionAmt = input(
-        f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
+        f"---\nHow much {baseCurrency} would you like to convert to {quoteCurrency}: ")
     total = float(conversionAmt)*conversionRate
-    print(f"{round(total,2)} {quoteCurrency}")
+    print(
+        f"---\n{conversionAmt} {baseCurrency} -> {round(total,2)} {quoteCurrency}")
 
-#one input function asks user for base or quote
+    writeHistory(baseCurrency, quoteCurrency, float(
+        conversionAmt), total, readJson())
+
+
+# one input function asks user for base or quote
 def chooseCurrency(base_or_quote):
     displayCurrencies(base_or_quote)
-    currency = input(">")
+    currency = input("---\n> ")
+    print("---")
     if currency == "ALL":
         displayAllCurrencies()
-        currency = input(">")
+        currency = input("---\n> ")
+        print("---")
     return currency
 
 
 def displayCurrencies(base_or_quote):
-    # list top ten most common traded currencies
+    # entryList top ten most common traded currencies
     topCurrencies = ["USD", "EUR", "GBP", "CAD",
                      "AUD", "NZD", "CHF", "JPY", "CNY", "HKD"]
-    print(f"Select {base_or_quote} Currency: ")
+    print(f"Select {base_or_quote} Currency:\n---")
     # lists them
     for currency in topCurrencies:
         print(currency)
-    print("Enter 'ALL' to List All Currencies")
+    print("---\nEnter 'ALL' to List All Currencies")
 
 
 def displayAllCurrencies():
@@ -55,20 +117,18 @@ def getConversionRate(baseCurrency, quoteCurrency):
     return conversionRates[quoteCurrency]
 
 
-
-#returns it in reverse
+# returns it in reverse
 def swapCurrencies(baseCurrency, quoteCurrency):
     return quoteCurrency, baseCurrency
 
 
-def runConversion(): 
+def runConversion():
     baseCurrency = chooseCurrency("Base")
     quoteCurrency = chooseCurrency("Quote")
     conversionRate = getConversionRate(baseCurrency, quoteCurrency)
     convertCurrency(baseCurrency, quoteCurrency, conversionRate)
 
     return baseCurrency, quoteCurrency, conversionRate
-
 
 
 # menu
@@ -85,26 +145,35 @@ def menu(input, baseCurrency, quoteCurrency, conversionRate):
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
         convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'D':
-        baseCurrency, quoteCurrency = swapCurrencies(baseCurrency,quoteCurrency)
+        baseCurrency, quoteCurrency = swapCurrencies(
+            baseCurrency, quoteCurrency)
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
         convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'E':
-       baseCurrency, quoteCurrency, conversionRate = runConversion()
+        baseCurrency, quoteCurrency, conversionRate = runConversion()
+    elif input == 'F':
+        history = readJson()
+
+        for entry in history:
+            print("---")
+            for key, value in entry.items():
+                print(f"{key} : {value}")
     else:
-        print("Invalid Option")
+        print("---\nInvalid Option")
 
     return baseCurrency, quoteCurrency, conversionRate
 
 
 def main():
     # stuff goes here
-    baseCurrency,quoteCurrency, conversionRate = runConversion()
+    baseCurrency, quoteCurrency, conversionRate = runConversion()
 
     # allowing the program to run
     while True:
 
         menuSelect = input(
-            "Please Select A Menu Option\nA -> Enter A New Amount\nB -> Choose New Base Currency\nC -> Choose New Quote Currency\nD -> Swap Base and Quote Currency\nE -> New Conversion\nQUIT -> Exit Program\n> ")
+            "---\nPlease Select A Menu Option\n---\nA -> Enter A New Amount\nB -> Choose New Base Currency\nC -> Choose New Quote Currency\nD -> Swap Base and Quote Currency\nE -> New Conversion\nF -> Conversion History\nQUIT -> Exit Program\n---\n> ")
+        print("---")
         if menuSelect == "QUIT":
             break
         baseCurrency, quoteCurrency, conversionRate = menu(
