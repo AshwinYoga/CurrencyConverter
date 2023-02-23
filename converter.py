@@ -1,7 +1,43 @@
 import sys
 import requests
+from datetime import datetime
+import json
+
 
 # write main function
+
+# func to get time and add to dictionary and write to txt file
+# if dictionary is longer than will remove the last entry
+# FILO
+def writeHistory(baseCurrency, quoteCurrency, inputAmount, outputAmount, dictionary):
+
+    currentTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    entry = {
+        "baseCurrency": baseCurrency,
+        "quoteCurrency": quoteCurrency,
+        "inputAmount": inputAmount,
+        "outputAmount": outputAmount
+    }
+
+    dictionary[currentTime] = entry
+    writeToJson(dictionary)
+    print(dictionary)
+
+
+def readJson():
+    with open('history.json', 'r') as f:
+
+        history = json.load(f)
+    return history
+
+
+def writeToJson(dictionary):
+    with open("history.json", "w") as f:
+        json.dump(dictionary, f)
+    f.close()
+
+# Actual conversion is done
 
 
 def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
@@ -10,8 +46,13 @@ def convertCurrency(baseCurrency, quoteCurrency, conversionRate):
         f"How much {baseCurrency} would you like to convert to {quoteCurrency}: ")
     total = float(conversionAmt)*conversionRate
     print(f"{round(total,2)} {quoteCurrency}")
+    ct = datetime.now()
 
-#one input function asks user for base or quote
+    writeHistory(baseCurrency, quoteCurrency, float(
+        conversionAmt), total, readJson())
+
+
+# one input function asks user for base or quote
 def chooseCurrency(base_or_quote):
     displayCurrencies(base_or_quote)
     currency = input(">")
@@ -55,20 +96,18 @@ def getConversionRate(baseCurrency, quoteCurrency):
     return conversionRates[quoteCurrency]
 
 
-
-#returns it in reverse
+# returns it in reverse
 def swapCurrencies(baseCurrency, quoteCurrency):
     return quoteCurrency, baseCurrency
 
 
-def runConversion(): 
+def runConversion():
     baseCurrency = chooseCurrency("Base")
     quoteCurrency = chooseCurrency("Quote")
     conversionRate = getConversionRate(baseCurrency, quoteCurrency)
     convertCurrency(baseCurrency, quoteCurrency, conversionRate)
 
     return baseCurrency, quoteCurrency, conversionRate
-
 
 
 # menu
@@ -85,11 +124,12 @@ def menu(input, baseCurrency, quoteCurrency, conversionRate):
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
         convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'D':
-        baseCurrency, quoteCurrency = swapCurrencies(baseCurrency,quoteCurrency)
+        baseCurrency, quoteCurrency = swapCurrencies(
+            baseCurrency, quoteCurrency)
         conversionRate = getConversionRate(baseCurrency, quoteCurrency)
         convertCurrency(baseCurrency, quoteCurrency, conversionRate)
     elif input == 'E':
-       baseCurrency, quoteCurrency, conversionRate = runConversion()
+        baseCurrency, quoteCurrency, conversionRate = runConversion()
     else:
         print("Invalid Option")
 
@@ -98,7 +138,7 @@ def menu(input, baseCurrency, quoteCurrency, conversionRate):
 
 def main():
     # stuff goes here
-    baseCurrency,quoteCurrency, conversionRate = runConversion()
+    baseCurrency, quoteCurrency, conversionRate = runConversion()
 
     # allowing the program to run
     while True:

@@ -1,0 +1,38 @@
+{
+    "2023-02-22 16:07:54": {
+        "baseCurrency": "USD",
+        "quoteCurrency": "CAD",
+        "inputAmount": 6909,
+        "outputAmount": 9330.6045
+    },
+    "2023-02-22 16:14:50": {
+        "baseCurrency": "GBP",
+        "quoteCurrency": "USD",
+        "inputAmount": 777,
+        "outputAmount": 940.5585
+    },
+    "2023-02-22 16:16:49": {
+        "baseCurrency": "EUR",
+        "quoteCurrency": "CAD",
+        "inputAmount": 333,
+        "outputAmount": 479.2536
+    },
+    "2023-02-22 16:25:39": {
+        "baseCurrency": "EUR",
+        "quoteCurrency": "NZD",
+        "inputAmount": 888.0,
+        "outputAmount": 1519.6344000000001
+    },
+    "2023-02-22 16:29:18": {
+        "baseCurrency": "CAD",
+        "quoteCurrency": "NZD",
+        "inputAmount": 9087.0,
+        "outputAmount": 10809.895199999999
+    },
+    "2023-02-22 16:34:19": {
+        "baseCurrency": "JPY",
+        "quoteCurrency": "AUD",
+        "inputAmount": 2020.0,
+        "outputAmount": 21.816000000000003
+    }
+}
