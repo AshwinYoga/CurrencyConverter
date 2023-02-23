@@ -1,33 +1,5 @@
 [
    {
-      "timeStamp": "2023-02-23 14:17:15",
-      "baseCurrency": "USD",
-      "quoteCurrency": "NZD",
-      "inputAmount": 777.0,
-      "outputAmount": 1247.7843
-   },
-   {
-      "timeStamp": "2023-02-23 14:22:16",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 111.0,
-      "outputAmount": 150.3384
-   },
-   {
-      "timeStamp": "2023-02-23 14:23:03",
-      "baseCurrency": "AUD",
-      "quoteCurrency": "HKD",
-      "inputAmount": 222.0,
-      "outputAmount": 1187.6778
-   },
-   {
-      "timeStamp": "2023-02-23 14:24:12",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CNY",
-      "inputAmount": 888.0,
-      "outputAmount": 6124.0032
-   },
-   {
       "timeStamp": "2023-02-23 14:25:29",
       "baseCurrency": "EUR",
       "quoteCurrency": "CHF",
@@ -68,5 +40,33 @@
       "quoteCurrency": "CAD",
       "inputAmount": 39393.0,
       "outputAmount": 53353.8792
+   },
+   {
+      "timeStamp": "2023-02-23 15:19:33",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 222.0,
+      "outputAmount": 300.6768
+   },
+   {
+      "timeStamp": "2023-02-23 15:20:35",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 1000.0,
+      "outputAmount": 1354.4
+   },
+   {
+      "timeStamp": "2023-02-23 15:20:47",
+      "baseCurrency": "AUD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 222000.0,
+      "outputAmount": 205039.19999999998
+   },
+   {
+      "timeStamp": "2023-02-23 15:28:03",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "inputAmount": 99.0,
+      "outputAmount": 134.0856
    }
 ]

@@ -32,10 +32,8 @@ def writeHistory(baseCurrency, quoteCurrency, inputAmount, outputAmount, data):
     }
 
     # only have the last ten entries FIFO
-    print(len(entryList))
     if len(entryList) == 10:
         entryList.pop(0)
-
     entryList.append(entry)
     writeToJson(entryList)
 
@@ -125,10 +123,10 @@ def swapCurrencies(baseCurrency, quoteCurrency):
 def runConversion():
     baseCurrency = chooseCurrency("Base")
     quoteCurrency = chooseCurrency("Quote")
-    conversionRate = getConversionRate(baseCurrency, quoteCurrency)
-    convertCurrency(baseCurrency, quoteCurrency, conversionRate)
+    # conversionRate = getConversionRate(baseCurrency, quoteCurrency)
+    convertCurrency(baseCurrency, quoteCurrency, getConversionRate(baseCurrency, quoteCurrency))
 
-    return baseCurrency, quoteCurrency, conversionRate
+    return baseCurrency, quoteCurrency, getConversionRate(baseCurrency, quoteCurrency)
 
 
 # menu
