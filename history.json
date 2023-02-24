@@ -1,61 +1,5 @@
 [
    {
-      "timeStamp": "2023-02-23 14:25:29",
-      "baseCurrency": "EUR",
-      "quoteCurrency": "CHF",
-      "inputAmount": 555.0,
-      "outputAmount": 548.1735
-   },
-   {
-      "timeStamp": "2023-02-23 14:55:53",
-      "baseCurrency": "USD",
-      "quoteCurrency": "GBP",
-      "inputAmount": 111222.0,
-      "outputAmount": 92180.7936
-   },
-   {
-      "timeStamp": "2023-02-23 14:57:21",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 222.0,
-      "outputAmount": 300.6768
-   },
-   {
-      "timeStamp": "2023-02-23 14:59:18",
-      "baseCurrency": "usd",
-      "quoteCurrency": "GBP",
-      "inputAmount": 333.0,
-      "outputAmount": 275.99039999999997
-   },
-   {
-      "timeStamp": "2023-02-23 14:59:46",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 111.0,
-      "outputAmount": 150.3384
-   },
-   {
-      "timeStamp": "2023-02-23 15:03:22",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 39393.0,
-      "outputAmount": 53353.8792
-   },
-   {
-      "timeStamp": "2023-02-23 15:19:33",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 222.0,
-      "outputAmount": 300.6768
-   },
-   {
-      "timeStamp": "2023-02-23 15:20:35",
-      "baseCurrency": "USD",
-      "quoteCurrency": "CAD",
-      "inputAmount": 1000.0,
-      "outputAmount": 1354.4
-   },
-   {
       "timeStamp": "2023-02-23 15:20:47",
       "baseCurrency": "AUD",
       "quoteCurrency": "CAD",
@@ -68,5 +12,67 @@
       "quoteCurrency": "CAD",
       "inputAmount": 99.0,
       "outputAmount": 134.0856
+   },
+   {
+      "timeStamp": "2023-02-23 19:26:45",
+      "baseCurrency": "USD",
+      "quoteCurrency": "EUR",
+      "inputAmount": 55.55,
+      "outputAmount": 52.411424999999994
+   },
+   {
+      "timeStamp": "2023-02-23 19:27:48",
+      "baseCurrency": "EUR",
+      "quoteCurrency": "USD",
+      "inputAmount": 99.99,
+      "outputAmount": 105.979401
+   },
+   {
+      "timeStamp": "2023-02-23 19:42:35",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "conversionRate": 1.3538,
+      "inputAmount": 777.999,
+      "outputAmount": 1053.2550462
+   },
+   {
+      "timeStamp": "2023-02-23 19:43:29",
+      "baseCurrency": "USD",
+      "quoteCurrency": "CAD",
+      "conversionRate": 1.3538,
+      "inputAmount": 123.0,
+      "outputAmount": 166.51739999999998
+   },
+   {
+      "timeStamp": "2023-02-23 19:43:39",
+      "baseCurrency": "EUR",
+      "quoteCurrency": "CAD",
+      "conversionRate": 1.4354,
+      "inputAmount": 321.0,
+      "outputAmount": 460.7634
+   },
+   {
+      "timeStamp": "2023-02-23 19:43:51",
+      "baseCurrency": "EUR",
+      "quoteCurrency": "AUD",
+      "conversionRate": 1.5561,
+      "inputAmount": 789.0,
+      "outputAmount": 1227.7629
+   },
+   {
+      "timeStamp": "2023-02-23 19:44:23",
+      "baseCurrency": "JPY",
+      "quoteCurrency": "GBP",
+      "conversionRate": 0.006173,
+      "inputAmount": 123.0,
+      "outputAmount": 0.7592789999999999
+   },
+   {
+      "timeStamp": "2023-02-23 19:44:39",
+      "baseCurrency": "GBP",
+      "quoteCurrency": "JPY",
+      "conversionRate": 161.9829,
+      "inputAmount": 987.0,
+      "outputAmount": 159877.1223
    }
 ]
