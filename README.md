@@ -1,9 +1,9 @@
 # CurrencyConverter
 
-Use exchange rate API to create get real-time conversion rates for curriencies used 200 countries
+Use exchange rate API to get real-time conversion rates for currencies used in 200 countries.
 
 
-App has five functions:
+The app has five functions:
 1. Convert Currency
 2. Change Base
 3. Change quote currency
